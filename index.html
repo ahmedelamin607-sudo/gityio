@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UnitySMP | Anarchy Minecraft Server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0a0a0d;
+      --bg-card: #121218;
+      --bg-card-hover: #181820;
+      --accent-red: #dc2626;
+      --accent-red-hover: #b91c1c;
+      --accent-orange: #ea580c;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: #242430;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .logo, .ip-text, .copy-btn {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    header {
+      background-color: rgba(10, 10, 13, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span {
+      color: var(--accent-red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(220, 38, 38, 0.15);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      color: #f87171;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .server-ip-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.75rem 0.75rem 0.75rem 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 100%;
+    }
+
+    .ip-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent-orange);
+      letter-spacing: 0.02em;
+    }
+
+    .copy-btn {
+      background: var(--accent-red);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-red-hover);
+    }
+
+    .features {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      background: var(--bg-card-hover);
+    }
+
+    .feature-icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .community-section {
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+    }
+
+    .banner {
+      background: linear-gradient(135deg, #181820 0%, #0d0d12 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .banner h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+
+    .banner p {
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      background: #5865F2;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 1.75rem;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+
+    .discord-btn:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .server-ip-box {
+        flex-direction: column;
+        width: 100%;
+      }
+      .copy-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">Unity<span>SMP</span></a>
+      <ul class="nav-links">
+        <li><a href="#rules">Rules</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#community">Discord</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="badge">No Rules • Vanilla Anarchy</div>
+    <h1>Survival Without Limits</h1>
+    <p>No claim blocks, no resets, and no staff intervention. Build your empire, raid bases, and survive on a world where anything goes.</p>
+    
+    <div class="server-ip-box">
+      <span class="ip-text" id="ip">webunitysmp.duckdns.org</span>
+      <button class="copy-btn" onclick="copyIP()">Copy Server IP</button>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="feature-card">
+      <div class="feature-icon">⚔️</div>
+      <h3>Pure Anarchy</h3>
+      <p>Griefing, stealing, and PvP are completely allowed everywhere across the map. No land claims to stop you.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Unmodded World</h3>
+      <p>Experience raw Minecraft survival. Explore the spawn chaos or travel millions of blocks out to hide your base.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🌐</div>
+      <h3>Cross-Platform Support</h3>
+      <p>Join seamlessly whether you are playing on Java Edition or Bedrock Edition platforms.</p>
+    </div>
+  </section>
+
+  <section class="community-section" id="community">
+    <div class="banner">
+      <h2>Join the Anarchy Hub</h2>
+      <p>Connect with players, share base coords (if you dare), and get server announcements.</p>
+      <a href="#" class="discord-btn">Join Official Discord</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; UnitySMP. Not affiliated with Mojang Studios.</p>
+  </footer>
+
+  <script>
+    function copyIP() {
+      const ip = document.getElementById("ip").innerText;
+      navigator.clipboard.writeText(ip);
+      const btn = document.querySelector(".copy-btn");
+      btn.innerText = "IP Copied!";
+      setTimeout(() => {
+        btn.innerText = "Copy Server IP";
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
